@@ -23,6 +23,7 @@ import { ProgressSnackbarComponent } from './progresssnackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
+import {HeaderToolbarComponent} from "../menu/headertoolbar.component";
 
 @Component({
     template: 'test'
@@ -30,6 +31,7 @@ import { Component } from '@angular/core';
 
 describe('ProgressService', () => {
 
+    let component: TestAppComponent;
     let injector: TestBed;
     let fixture: ComponentFixture<TestAppComponent>;
 
@@ -42,6 +44,7 @@ describe('ProgressService', () => {
         }).compileComponents();
         injector = getTestBed();
         fixture = injector.createComponent(TestAppComponent);
+        component = fixture.componentInstance;
     }));
 
     it('should see changes in the progress snackbar', fakeAsync(() => {
@@ -82,4 +85,8 @@ describe('ProgressService', () => {
         });
         expect(snackbarElement).toBeNull();
     }));
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

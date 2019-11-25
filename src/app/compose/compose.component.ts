@@ -28,7 +28,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DraftDeskService, DraftFormModel } from './draftdesk.service';
 import { HttpClient, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { catchError, debounceTime, mergeMap } from 'rxjs/operators';
 import { DialogService } from '../dialog/dialog.service';
 
@@ -182,7 +182,7 @@ export class ComposeComponent implements AfterViewInit, OnDestroy, OnInit {
 
     public removeAttachment(attachmentIndex: number) {
         this.model.attachments.splice(attachmentIndex, 1);
-        this.submit();
+       // this.submit();
     }
 
     public uploadFiles(files: File[]) {

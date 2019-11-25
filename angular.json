@@ -147,7 +147,7 @@
       }
     },
     "rmm6": {
-      "root": "",
+      "root": "rmm6",
       "sourceRoot": "src",
       "projectType": "application",
       "architect": {

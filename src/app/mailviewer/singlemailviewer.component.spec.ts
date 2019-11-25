@@ -19,12 +19,12 @@
 
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
-import { SingleMailViewerComponent } from './singlemailviewer.component';
+import {ShowHTMLDialogComponent, SingleMailViewerComponent} from './singlemailviewer.component';
 import { ResizerModule } from '../directives/resizer.module';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import {MatCardModule} from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule } from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -49,8 +49,14 @@ import { MessageListService } from '../rmmapi/messagelist.service';
 describe('SingleMailViewerComponent', () => {
   let component: SingleMailViewerComponent;
   let fixture: ComponentFixture<SingleMailViewerComponent>;
+  let matDialog: MatDialog;
 
   beforeEach(async(() => {
+    TestBed.overrideModule(SingleMailViewerComponent, {
+      set: {
+        entryComponents: [ShowHTMLDialogComponent],
+      },
+    });
     TestBed.configureTestingModule({
       imports: [
         NoopAnimationsModule,
@@ -120,6 +126,7 @@ describe('SingleMailViewerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SingleMailViewerComponent);
     component = fixture.componentInstance;
+    matDialog = component.dialog;
     component.messageActionsHandler = new class implements MessageActions {
       mailViewerComponent: SingleMailViewerComponent;
       moveToFolder() {
@@ -173,4 +180,15 @@ describe('SingleMailViewerComponent', () => {
 
       expect(component.mailObj.attachments[1].downloadURL.indexOf('blob:')).toBe(0);
     }));
+
+
+  it('should open dialog', () => {
+    expect(component.showHTMLWarningDialog).toBeTruthy();
+  });
+
+  it('should set height properly', () => {
+    component.heightChanged(300);
+    expect(component.height).toEqual(300);
+  });
+
 });

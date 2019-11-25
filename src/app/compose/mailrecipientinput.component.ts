@@ -1,4 +1,4 @@
-// --------- BEGIN RUNBOX LICENSE ---------
+0// --------- BEGIN RUNBOX LICENSE ---------
 // Copyright (C) 2016-2018 Runbox Solutions AS (runbox.com).
 // 
 // This file is part of Runbox 7.

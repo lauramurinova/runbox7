@@ -89,23 +89,24 @@ const routes: Routes = [
         path: '', outlet: 'headertoolbar',
         component: HeaderToolbarComponent
       },
-      { path: 'domainregistration', component: DomainRegisterComponent},
+      { path: 'domainregistration', component: DomainRegisterComponent, data: {title: 'Registration'} },
       { path: 'dkim', component: DkimComponent},
-      { path: 'calendar', component: CalendarAppComponent },
-      { path: 'index_dev.html', component: AppComponent },
-      { path: 'app', component: AppComponent },
+      { path: 'calendar', component: CalendarAppComponent, data: {title: 'Calendar'}  },
+      { path: 'index_dev.html', component: AppComponent, data: {title: 'Home'}  },
+      { path: 'app', component: AppComponent, data: {title: 'Home'}  },
       { path: '',
         component: AppComponent,
         children: [
           {
             path: 'compose',
-            component: DraftDeskComponent
+            component: DraftDeskComponent,
+            data: {title: 'Compose'}
           }
         ]
       }
     ]
   },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent, data: {title: 'Login'}  }
 ];
 
 @NgModule({
